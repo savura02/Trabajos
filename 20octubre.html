@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Datos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1d4ed8;
+            --primary-dark: #1e3a8a;
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-color: #cbd5e1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(29, 78, 216, 0.1);
+        }
+        h1 { color: var(--primary-dark); font-size: 1.5rem; margin-bottom: 1rem; }
+        p { color: var(--text-muted); margin-bottom: 1.5rem; }
+        .resultado {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            padding: 1.2rem;
+            margin: 1.5rem 0;
+            text-align: left;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover { background-color: var(--primary-dark); }
+        .back { display: inline-block; margin-top: 1.5rem; color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+        .back:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>Registro Condicional</h1>
+        <p>Práctica de evaluación con confirmación previa.</p>
+        
+        <div class="resultado" id="output">Haz clic en el botón para iniciar el registro.</div>
+
+        <button class="btn" onclick="iniciarRegistro()">Iniciar Registro</button>
+        <div>
+            <a href="../../segundo_parcial.html" class="back">&larr; Volver al Segundo Parcial</a>
+        </div>
+    </div>
+
+    <script>
+        function iniciarRegistro() {
+            const continuar = confirm('¿Desea registrar tus datos?');
+            if (continuar) {
+                let nombre = prompt('Escribe tu nombre');
+                let espe = prompt('Escribe tu especialidad');
+                let edad = prompt('Escribe tu edad');
+                let direccion = prompt('Escribe tu direccion');
+                let email = prompt('Escribe tu correo electronico');
+
+                if (nombre && espe && edad && direccion && email) {
+                    let htmlRes = `
+                        <strong>Tu nombre es:</strong> ${nombre}<br>
+                        <strong>Tu especialidad es:</strong> ${espe}<br>
+                        <strong>Tu edad es:</strong> ${edad} años<br>
+                        <strong>Tu dirección es:</strong> ${direccion}<br>
+                        <strong>Tu correo es:</strong> ${email}
+                    `;
+                    document.getElementById("output").innerHTML = htmlRes;
+                } else {
+                    alert("Faltaron campos por rellenar.");
+                }
+            } else {
+                document.getElementById("output").innerHTML = "<span style='color: #dc2626;'>Acción cancelada: ¡Tengo flojera! 😴</span>";
+            }
+        }
+    </script>
+</body>
+</html>

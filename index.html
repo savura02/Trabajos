@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio Académico - Ghibli Style</title>
+    <link rel="shortcut icon" href="ICON2.png" type="image/x-icon">
+    <!-- Tipografía cálida estilo Ghibli -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ghibli-green: #3b6d51;       /* Verde bosque profundo */
+            --ghibli-sage: #8fa89b;        /* Verde salvia suave */
+            --ghibli-cream: #fbfbfa;       /* Fondo pergamino claro */
+            --ghibli-card: #ffffff;        /* Blanco puro para tarjetas */
+            --ghibli-sky: #5b82a6;         /* Azul cielo Ghibli */
+            --text-main: #2c3e35;          /* Texto principal oscuro natural */
+            --text-muted: #5c7065;         /* Texto secundario */
+            --border-color: #d1ded6;     /* Bordes suaves */
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            background-color: var(--ghibli-cream); 
+            color: var(--text-main); 
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 2rem 1rem; 
+            background-image: radial-gradient(#e2ebe4 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .container { max-width: 900px; margin: 0 auto; width: 100%; text-align: center; }
+        
+        /* Encabezado Principal */
+        header { 
+            background: linear-gradient(135deg, var(--ghibli-green) 0%, var(--ghibli-sky) 100%); 
+            color: white; 
+            padding: 4rem 2rem; 
+            border-radius: 1.5rem; 
+            margin-bottom: 3rem; 
+            box-shadow: 0 15px 35px -5px rgba(59, 109, 81, 0.3);
+            border: 2px solid #a8c5b3;
+        }
+        header h1 { font-size: 2.8rem; font-weight: 700; margin-bottom: 0.8rem; letter-spacing: 0.5px; }
+        header p { font-size: 1.2rem; opacity: 0.95; font-weight: 500; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+        /* Contenedor de Parciales (Tarjetas Grandes) */
+        .parciales-grid { 
+            display: grid; 
+            grid-template-columns: 1fr; 
+            gap: 2rem; 
+            margin-bottom: 3rem; 
+        }
+        @media (min-width: 768px) { 
+            .parciales-grid { grid-template-columns: repeat(2, 1fr); } 
+        }
+
+        .parcial-card { 
+            background: var(--ghibli-card); 
+            border: 2px solid var(--border-color); 
+            border-radius: 1.2rem; 
+            padding: 2.5rem 2rem; 
+            text-decoration: none; 
+            color: var(--text-main);
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            box-shadow: 0 8px 20px rgba(44, 62, 53, 0.06); 
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+        }
+        .parcial-card:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 16px 30px -5px rgba(59, 109, 81, 0.2); 
+            border-color: var(--ghibli-green); 
+        }
+
+        .icon-box {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: #e8f2ec;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 1px solid #c2dcd0;
+        }
+
+        .parcial-card h2 { 
+            font-size: 1.5rem; 
+            color: var(--ghibli-green); 
+            margin-bottom: 0.8rem; 
+            font-weight: 700; 
+        }
+        
+        .parcial-card p { 
+            font-size: 0.95rem; 
+            color: var(--text-muted); 
+            line-height: 1.5; 
+            margin-bottom: 1.5rem;
+        }
+
+        .card-btn {
+            background-color: var(--ghibli-green);
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+        .parcial-card:hover .card-btn {
+            background-color: #2e5440;
+        }
+
+        /* Pie de página */
+        footer { 
+            text-align: center; 
+            color: var(--text-muted); 
+            font-size: 0.9rem; 
+            padding: 1.5rem 0; 
+            border-top: 1px dashed var(--border-color);
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Encabezado -->
+        <header>
+            <h1>Portafolio Académico</h1>
+            <p>Bienvenido al registro de prácticas y proyectos de desarrollo web. Un espacio inspirado en la naturaleza y el aprendizaje continuo.</p>
+        </header>
+
+        <!-- Secciones de Parciales -->
+        <div class="parciales-grid">
+            <!-- Tarjeta Primer Parcial -->
+            <a href="primer_parcial.html" class="parcial-card">
+                <div class="icon-box">🌱</div>
+                <h2>Primer Parcial</h2>
+                <p>Fundamentos de HTML, maquetación de estructuras web, tablas, hipervínculos, multimedia y formularios de registro.</p>
+                <span class="card-btn">Explorar Prácticas &rarr;</span>
+            </a>
+
+            <!-- Tarjeta Segundo Parcial -->
+            <a href="segundo_parcial.html" class="parcial-card">
+                <div class="icon-box">🍃</div>
+                <h2>Segundo Parcial</h2>
+                <p>Lógica de programación en JavaScript, manipulación avanzada del DOM, estructuras condicionales, bucles y funciones.</p>
+                <span class="card-btn">Explorar Prácticas &rarr;</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Uso de IA</p>
+    </footer>
+</body>
+</html>

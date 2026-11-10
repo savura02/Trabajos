@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segundo Parcial - Guía de Estudio y Prácticas</title>
+    <link rel="shortcut icon" href="ICON2.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ghibli-green: #3b6d51;
+            --ghibli-sage: #8fa89b;
+            --ghibli-cream: #fbfbfa;
+            --ghibli-card: #ffffff;
+            --ghibli-sky: #5b82a6;
+            --text-main: #2c3e35;
+            --text-muted: #5c7065;
+            --border-color: #d1ded6;
+            --code-bg: #1a2621;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            background-color: var(--ghibli-cream); 
+            color: var(--text-main); 
+            padding: 2.5rem 1rem; 
+            background-image: radial-gradient(#e2ebe4 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        .nav-back { 
+            display: inline-block; 
+            margin-bottom: 1.5rem; 
+            color: var(--ghibli-green); 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--ghibli-sky); text-decoration: underline; }
+
+        header { 
+            background: linear-gradient(135deg, var(--ghibli-green) 0%, var(--ghibli-sky) 100%); 
+            color: white; 
+            padding: 3rem 2rem; 
+            border-radius: 1.5rem; 
+            margin-bottom: 2.5rem; 
+            text-align: center; 
+            box-shadow: 0 10px 30px -5px rgba(59, 109, 81, 0.25);
+            border: 2px solid #a8c5b3;
+        }
+        header h1 { font-size: 2.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        header p { font-size: 1.1rem; opacity: 0.95; font-weight: 500; }
+
+        .section-title { 
+            font-size: 1.4rem; 
+            color: var(--ghibli-green); 
+            margin: 3.5rem 0 1rem 0; 
+            border-bottom: 2px dashed var(--ghibli-sage); 
+            padding-bottom: 0.5rem; 
+            font-weight: 700; 
+        }
+
+        /* Tarjeta de Teoría para Estudiar */
+        .theory-card {
+            background: #eef4f1;
+            border-left: 5px solid var(--ghibli-green);
+            border-radius: 0.5rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        .theory-card h4 {
+            color: var(--ghibli-green);
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
+        }
+        
+        .grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+
+        .card { 
+            background: var(--ghibli-card); 
+            border: 1px solid var(--border-color); 
+            border-radius: 1rem; 
+            padding: 1.8rem; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            box-shadow: 0 4px 12px rgba(44, 62, 53, 0.04); 
+            transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 12px 25px -5px rgba(59, 109, 81, 0.12); 
+            border-color: var(--ghibli-green); 
+        }
+        
+        .badge { 
+            display: inline-block; 
+            background: #e8f2ec; 
+            color: var(--ghibli-green); 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            padding: 0.3rem 0.8rem; 
+            border-radius: 9999px; 
+            margin-bottom: 1rem; 
+            border: 1px solid #c2dcd0;
+        }
+        .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: 700; }
+        .card p.desc { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.5; }
+
+        details { 
+            margin-bottom: 1.2rem; 
+            background: #f4f7f5; 
+            border: 1px solid var(--border-color); 
+            border-radius: 0.6rem; 
+            padding: 0.6rem 1rem; 
+        }
+        summary { font-size: 0.85rem; font-weight: 600; color: var(--ghibli-green); cursor: pointer; outline: none; }
+        pre { background: var(--code-bg); color: #a3e4d7; padding: 0.75rem; border-radius: 0.4rem; font-family: 'Fira Code', monospace; font-size: 0.75rem; overflow-x: auto; margin-top: 0.5rem; }
+
+        .btn { 
+            display: block; 
+            text-align: center; 
+            background-color: var(--ghibli-green); 
+            color: white; 
+            padding: 0.75rem; 
+            border-radius: 0.6rem; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.92rem; 
+            transition: background 0.2s; 
+        }
+        .btn:hover { background-color: #2e5440; }
+        
+        footer { text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem; padding-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-back">&larr; Volver al Inicio del Bosque</a>
+        <header>
+            <h1>🌿 Guía de Estudio: Segundo Parcial (JavaScript)</h1>
+            <p>Teoría clave, conceptos y prácticas interactivas para tu examen</p>
+        </header>
+
+        <!-- ================= 1. ALERT ================= -->
+        <h2 class="section-title">🍃 1. Cuadros de Diálogo (Alert & Prompt)</h2>
+        <div class="theory-card">
+            <h4>📖 Repaso Teórico:</h4>
+            JavaScript permite interactuar con el usuario mediante ventanas emergentes nativas del navegador. <code>prompt()</code> sirve para capturar texto escrito por el usuario, <code>confirm()</code> evalúa un cuadro de aceptación (verdadero/falso), y <code>alert()</code> muestra un mensaje informativo en pantalla.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Alert</span>
+                    <h3>Aprendiendo JavaScript</h3>
+                    <p class="desc">Captura de nombre y edad mediante cuadros de diálogo interactivos.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>let nombre = prompt('Escribe tu nombre');\nalert("Mi nombre es: " + nombre);</pre></details>
+                <a href="2do_parcial/Alert/AprendiendoJSP.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Alert</span>
+                    <h3>División de Dos Números</h3>
+                    <p class="desc">Cálculo de cociente solicitando valores numéricos con validación.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>let divi = numero1 / numero2;\nalert(divi);</pre></details>
+                <a href="2do_parcial/Alert/Division.html" class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Alert</span>
+                    <h3>Multiplicación de Dos Números</h3>
+                    <p class="desc">Cálculo de producto utilizando operador de multiplicación.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>let multiplicacion = numero1 * numero2;\nalert(multiplicacion);</pre></details>
+                <a href="2do_parcial/Alert/Multiplicacion.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Alert</span>
+                    <h3>Resta de Dos Números</h3>
+                    <p class="desc">Cálculo de diferencia numérica mediante prompts y alertas.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>let resta = numero1 - numero2;\nalert(resta);</pre></details>
+                <a href="2do_parcial/Alert/Resta.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Alert</span>
+                    <h3>Suma de Dos Números</h3>
+                    <p class="desc">Operación básica de adición reflejada en alerta emergente.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>let suma = numero1 + numero2;\nalert(suma);</pre></details>
+                <a href="2do_parcial/Alert/Suma.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <!-- ================= 2. DO WHILE ================= -->
+        <h2 class="section-title">🍃 2. Bucle Do...While</h2>
+        <div class="theory-card">
+            <h4>📖 Repaso Teórico:</h4>
+            El bucle <code>do...while</code> es similar al <code>while</code>, con la gran diferencia de que ejecuta el bloque de código <b>al menos una vez</b> antes de evaluar la condición que se encuentra al final.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Do While</span>
+                    <h3>Mostrar números del 1 al 5</h3>
+                    <p class="desc">Bucle iterativo con verificación posterior para conteo ascendente.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>do { texto += i; i++; } while (i <= 5);</pre></details>
+                <a href="2do_parcial/DO%20WHILE/dowhile1.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Do While</span>
+                    <h3>Mostrar números del 5 al 1</h3>
+                    <p class="desc">Conteo regresivo implementado con estructura do...while.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>do { texto += i; i--; } while (i >= 1);</pre></details>
+                <a href="2do_parcial/DO%20WHILE/dowhile2.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Do While</span>
+                    <h3>Mostrar números pares del 2 al 10</h3>
+                    <p class="desc">Secuencia de números pares incrementando de 2 en 2.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>do { texto += i; i += 2; } while (i <= 10);</pre></details>
+                <a href="2do_parcial/DO%20WHILE/dowhile3.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Do While</span>
+                    <h3>Sumar números del 1 al 5</h3>
+                    <p class="desc">Acumulador de valores numéricos en un rango predefinido.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>do { suma = suma + i; i++; } while (i <= 5);</pre></details>
+                <a href="2do_parcial/DO%20WHILE/dowhile4.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <!-- ================= 3. DOCUMENT_WRITE ================= -->
+        <h2 class="section-title">🍃 3. Impresión con Document.write</h2>
+        <div class="theory-card">
+            <h4> Repaso Teórico:</h4>
+            <code>document.write()</code> permite escribir texto o etiquetas HTML directamente en el flujo del documento HTML del navegador. Es útil para prácticas sencillas de visualización de resultados.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Document Write</span>
+                    <h3>Datos Estudiante</h3>
+                    <p class="desc">Captura y despliegue estructurado de datos personales y académicos.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>document.write("Nombre : " + nombre);\ndocument.write("&lt;br&gt;Edad : " + edad);</pre></details>
+                <a href="2do_parcial/document_write/DatosEstudiante.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Document Write</span>
+                    <h3>Operaciones Básicas</h3>
+                    <p class="desc">Cálculo simultáneo de suma, resta, multiplicación y división.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>suma = n1 + n2;\nresta = n1 - n2;\nmultiplicacion = n1 * n2;\ndivision = n1 / n2;</pre></details>
+                <a href="2do_parcial/document_write/OperacionesBac.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <!-- ================= 4. DOM ================= -->
+        <h2 class="section-title">🍃 4. Manipulación del DOM (Document Object Model)</h2>
+        <div class="theory-card">
+            <h4>Repaso Teórico:</h4>
+            El DOM conecta la página web con JavaScript. Permite modificar el contenido con <code>innerHTML</code>, buscar elementos por su identificador único con <code>getElementById()</code>, o utilizar selectores avanzados con <code>querySelector()</code>.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">DOM - getElementById</span>
+                    <h3>Modificar Texto de Elemento</h3>
+                    <p class="desc">Actualización del contenido de texto mediante el ID del elemento.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>var elemento = document.getElementById("aviso");\nelemento.textContent = "Hola Estudiantes";</pre></details>
+                <a href="2do_parcial/DOM/carpeta%20document,getElementById/metodo2_1.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">DOM - getElementById</span>
+                    <h3>Modificar Estilos CSS</h3>
+                    <p class="desc">Cambio dinámico de propiedades de estilo (color de fondo) en un botón.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>document.getElementById("btn").style.backgroundColor = "lightblue";</pre></details>
+                <a href="2do_parcial/DOM/carpeta%20document,getElementById/metodo2_2.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">DOM - innerHTML</span>
+                    <h3>Inyección de Texto HTML</h3>
+                    <p class="desc">Modificación de contenido estructurado dentro de contenedores.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>document.getElementById("mensaje").innerHTML = "¡Bienvenido!";</pre></details>
+                <a href="2do_parcial/DOM/innerHTML/metodo1_1.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">DOM - innerHTML</span>
+                    <h3>Inyección de Etiquetas (Imagen)</h3>
+                    <p class="desc">Carga y renderizado dinámico de una imagen mediante etiqueta HTML.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>document.getElementById("imagen").innerHTML = '&lt;img src="logo.jpg" alt="Logo"&gt;';</pre></details>
+                <a href="2do_parcial/DOM/innerHTML/metodo1_2.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">DOM - querySelector</span>
+                    <h3>Selección por Selector CSS</h3>
+                    <p class="desc">Modificación de propiedades en elementos seleccionados por clase.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>document.querySelector(".destacado").style.color = "red";</pre></details>
+                <a href="2do_parcial/DOM/querySelector()/metodo3_1.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">DOM - querySelector</span>
+                    <h3>Deshabilitar Componentes</h3>
+                    <p class="desc">Manipulación del estado interactivo (disabled) de un botón.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>document.querySelector(".btn").disabled = true;</pre></details>
+                <a href="2do_parcial/DOM/querySelector()/metodo3_2.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">DOM - Métodos ID</span>
+                    <h3>Método getElementById (Prueba)</h3>
+                    <p class="desc">Demostración clásica del objeto document y selección por identificador.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>const myElement = document.getElementById("prueba");\nmyElement.style.color = "green";</pre></details>
+                <a href="2do_parcial/DOM/MetodoId.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">DOM - Classes</span>
+                    <h3>Método getElementsByClassName</h3>
+                    <p class="desc">Manipulación de elementos basados en colecciones de clases CSS.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>const collection = document.getElementsByClassName("example color");\ncollection[0].style.backgroundColor = "red";</pre></details>
+                <a href="2do_parcial/DOM/Metodoname.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <!-- ================= 5. ELSE IF ================= -->
+        <h2 class="section-title">🍃 5. Estructuras Condicionales (If / Else If)</h2>
+        <div class="theory-card">
+            <h4>Repaso Teórico:</h4>
+            Permiten tomar decisiones lógicas en el código. Si la condición del <code>if</code> se cumple, ejecuta un bloque; si no, evalúa alternativas con <code>else if</code> o ejecuta una opción por defecto con <code>else</code>.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Else If</span>
+                    <h3>Registro con Confirmación</h3>
+                    <p class="desc">Validación mediante cuadro de diálogo confirm para recolectar datos.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>const continuar = confirm('¿Desea registrar tus datos?');\nif(continuar) { ... } else { alert('Tengo flojera'); }</pre></details>
+                <a href="2do_parcial/ELSE%20IF/20octubre.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Else If</span>
+                    <h3>Evaluación de Promedio</h3>
+                    <p class="desc">Comprobación de calificación aprobatoria mayor o igual a 6.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>if(promedio >= 6) { document.write("Aprobado"); } else { document.write("Reprobado"); }</pre></details>
+                <a href="2do_parcial/ELSE%20IF/Ejercicio1.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Else If</span>
+                    <h3>Validación de Edad para Votar</h3>
+                    <p class="desc">Comprobación de mayoría de edad (>= 18 años).</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>if(edad >= 18) { document.write("YA PUEDES VOTAR"); } else { document.write("AÚN NO"); }</pre></details>
+                <a href="2do_parcial/ELSE%20IF/Ejercicio2.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Else If</span>
+                    <h3>Comparación de Dos Números</h3>
+                    <p class="desc">Estructura condicional anidada para determinar mayor, menor o igualdad.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>if(num1 > num2) { ... } else if(num2 > num1) { ... } else { ... }</pre></details>
+                <a href="2do_parcial/ELSE%20IF/Ejercicio3.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Else If</span>
+                    <h3>Número Positivo, Negativo o Cero</h3>
+                    <p class="desc">Evaluación del signo matemático de un número ingresado.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>if(num1 > 0) { ... } else if(num1 < 0) { ... } else { ... }</pre></details>
+                <a href="2do_parcial/ELSE%20IF/Ejercicio5.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <!-- ================= 6. FOR ================= -->
+        <h2 class="section-title">🍃 6. Bucle For</h2>
+        <div class="theory-card">
+            <h4>Repaso Teórico:</h4>
+            El bucle <code>for</code> se utiliza cuando se conoce de antemano el número exacto de veces que se desea repetir un bloque de instrucciones. Consta de tres partes: inicialización, condición y actualización.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Bucle For</span>
+                    <h3>Mostrar números del 1 al 10</h3>
+                    <p class="desc">Secuencia numérica ascendente controlada por bucle for.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>for (let i = 1; i <= 10; i++) { document.write(i); }</pre></details>
+                <a href="2do_parcial/FOR/for1.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Bucle For</span>
+                    <h3>Tabla de Multiplicar del 2</h3>
+                    <p class="desc">Generación automatizada de productos de la tabla del 2.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>for (let i = 1; i <= 10; i++) { document.write("2 x " + i + " = " + (2 * i)); }</pre></details>
+                <a href="2do_parcial/FOR/for2.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Bucle For</span>
+                    <h3>Números Impares del 1 al 9</h3>
+                    <p class="desc">Secuencia numérica con incremento de 2 en 2.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>for (let i = 1; i <= 9; i += 2) { document.write(i); }</pre></details>
+                <a href="2do_parcial/FOR/for3.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Bucle For</span>
+                    <h3>Sumar números del 1 al 10</h3>
+                    <p class="desc">Acumulación total de valores en un ciclo definido.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>for (let i = 1; i <= 10; i++) { suma = suma + i; }</pre></details>
+                <a href="2do_parcial/FOR/for4.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <!-- ================= 7. FUNCIONES ================= -->
+        <h2 class="section-title">🍃 7. Funciones en JavaScript</h2>
+        <div class="theory-card">
+            <h4>Repaso Teórico:</h4>
+            Una función es un bloque de código reutilizable diseñado para realizar una tarea específica. Pueden recibir valores de entrada mediante <b>parámetros</b> y devolver un resultado utilizando la instrucción <code>return</code>.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Funciones JS</span>
+                    <h3>Función Simple 1</h3>
+                    <p class="desc">Invocación de una función básica sin parámetros que muestra alerta.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>function mensaje() { alert("Bienvenido a funciones en JS"); }\nmensaje();</pre></details>
+                <a href="2do_parcial/FUNCIONES/Funcion_1.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Funciones JS</span>
+                    <h3>Función Simple 2 (Saludar)</h3>
+                    <p class="desc">Declaración de función modular para saludo general.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>function saludar() { document.write("HOLA MUNDO"); }\nsaludar();</pre></details>
+                <a href="2do_parcial/FUNCIONES/Funcion_2.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Funciones JS</span>
+                    <h3>Función por Grupos Académicos</h3>
+                    <p class="desc">Reutilización de bloques de código recibiendo distintos grupos.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>function saludo(grupo) { document.write("hola " + grupo); }\nsaludo('5 AVP');</pre></details>
+                <a href="2do_parcial/FUNCIONES/Funcion_3.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Funciones JS</span>
+                    <h3>Obtener el Doble (Con Retorno)</h3>
+                    <p class="desc">Uso de la instrucción return para devolver un valor calculado.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>function obtenerDoble(n) { return n * 2; }\nobtenerDoble(7);</pre></details>
+                <a href="2do_parcial/FUNCIONES/Funcion_4.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Funciones JS</span>
+                    <h3>Saludo Personalizado con Parámetros</h3>
+                    <p class="desc">Envío de argumentos de nombres para saludos dinámicos.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>function saludo(nombre) { document.write("hola " + nombre); }\nsaludo('Maria de Jesus');</pre></details>
+                <a href="2do_parcial/FUNCIONES/Funcion_parametro.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <!-- ================= 8. SWITCH ================= -->
+        <h2 class="section-title">🍃 8. Estructura Switch</h2>
+        <div class="theory-card">
+            <h4> Repaso Teórico:</h4>
+            La estructura <code>switch</code> evalúa una expresión y compara su valor contra múltiples casos (<code>case</code>). Si encuentra coincidencia, ejecuta el bloque correspondiente hasta encontrar un <code>break</code>.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Switch</span>
+                    <h3>Asignación de Semestres y Laboratorios</h3>
+                    <p class="desc">Evaluación multi-caso para determinar el laboratorio correspondiente.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>switch (semestre) {\n    case 1: ... break;\n    case 2: case 3: case 4: ... break;\n}</pre></details>
+                <a href="2do_parcial/SWITCH/Ejercicio4.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Switch</span>
+                    <h3>Menú de Operaciones Básicas</h3>
+                    <p class="desc">Selección de operaciones aritméticas mediante un menú de opciones.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>switch (opcion) {\n    case 1: suma = n1 + n2; break;\n    case 2: resta = n1 - n2; break;\n}</pre></details>
+                <a href="2do_parcial/SWITCH/Ejercicio6.html" class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <!-- ================= 9. WHILE ================= -->
+        <h2 class="section-title">🍃 9. Bucle While</h2>
+        <div class="theory-card">
+            <h4> Repaso Teórico:</h4>
+            El bucle <code>while</code> ejecuta un bloque de instrucciones de manera repetitiva <b>mientras</b> una condición especificada se mantenga verdadera. Es ideal cuando no se conoce el número de iteraciones de antemano.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Bucle While</span>
+                    <h3>Mostrar números del 1 al 5</h3>
+                    <p class="desc">Estructura iterativa con condición previa para conteo.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>while (i <= 5) { document.write(i); i++; }</pre></details>
+                <a href="2do_parcial/WHILE/while1.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Bucle While</span>
+                    <h3>Mostrar números pares del 2 al 10</h3>
+                    <p class="desc">Bucle while con incremento de 2 en 2.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>while (i <= 10) { document.write(i); i = i + 2; }</pre></details>
+                <a href="2do_parcial/WHILE/while2.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Bucle While</span>
+                    <h3>Contar del 10 al 1</h3>
+                    <p class="desc">Cuenta regresiva utilizando decremento en bucle while.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>while (i >= 1) { document.write(i); i--; }</pre></details>
+                <a href="2do_parcial/WHILE/while3.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Bucle While</span>
+                    <h3>Sumar números del 1 al 5</h3>
+                    <p class="desc">Acumulación de valores numéricos en bucle condicional.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>while (i <= 5) { suma = suma + i; i++; }</pre></details>
+                <a href="2do_parcial/WHILE/while4.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Uso de IA</p>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método getElementById - Estilos</title>
+    <script>
+        function cambiarEstilo() {
+            // Busca el elemento con id="caja" y modifica sus propiedades CSS en línea
+            var caja = document.getElementById("caja");
+            caja.style.backgroundColor = "lightblue";
+            caja.style.color = "#1e3a8a";
+            caja.style.padding = "20px";
+            caja.style.borderRadius = "8px";
+            caja.style.fontWeight = "bold";
+        }
+    </script>
+</head>
+<body>
+    <h1>Modificar Estilos con DOM</h1>
+    
+    <!-- Elemento objetivo con id="caja" -->
+    <div id="caja">
+        Esta caja cambiará de color y estilo al hacer clic en el botón.
+    </div>
+
+    <br>
+    <!-- Botón para accionar la función -->
+    <button onclick="cambiarEstilo()">Cambiar Estilo</button>
+
+    <br><br>
+    <a href="../../../segundo_parcial.html">&larr; Volver al Segundo Parcial</a>
+</body>
+</html>

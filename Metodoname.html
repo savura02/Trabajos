@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>getElementsByClassName - Método</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1d4ed8;
+            --primary-dark: #1e3a8a;
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #475569;
+            --border-color: #cbd5e1;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 1rem;
+        }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            max-width: 550px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 25px -5px rgba(29, 78, 216, 0.1);
+        }
+        h1 { color: var(--primary-dark); font-size: 1.3rem; margin-bottom: 0.3rem; }
+        h2 { color: var(--text-muted); font-size: 1rem; margin-bottom: 1rem; font-weight: 400; }
+        p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.2rem; }
+        
+        .cajas-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        .ejemplo {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            border-radius: 0.4rem;
+            font-size: 0.9rem;
+        }
+        .btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            width: 100%;
+        }
+        .btn:hover { background-color: var(--primary-dark); }
+        .back { display: inline-block; margin-top: 1.5rem; color: var(--primary-blue); text-decoration: none; font-weight: 600; }
+        .back:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>The Document Object</h1>
+        <h2>The getElementsByClassName() Method</h2>
+
+        <p>Cambia el color de fondo del primer elemento con las clases "example" y "color":</p>
+
+        <div class="cajas-container">
+            <div class="ejemplo">
+                <p>Bloque 1 (class="example")</p>
+            </div>
+            <div class="ejemplo color" id="bloque2">
+                <p>Bloque 2 (class="example color")</p>
+            </div>
+            <div class="ejemplo color" id="bloque3">
+                <p>Bloque 3 (class="example color")</p>
+            </div>
+        </div>
+
+        <button class="btn" onclick="ejecutarElementsByClassName()">Aplicar getElementsByClassName</button>
+        <div>
+            <a href="../../segundo_parcial.html" class="back">&larr; Volver al Segundo Parcial</a>
+        </div>
+    </div>
+
+    <script>
+        function ejecutarElementsByClassName() {
+            const collection = document.getElementsByClassName("example color");
+            if(collection.length > 0) {
+                collection[0].style.backgroundColor = "#fca5a5"; // Rojo suave elegante
+                collection[0].style.borderColor = "#ef4444";
+            }
+        }
+    </script>
+</body>
+</html>

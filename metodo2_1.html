@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Método getElementById - Texto</title>
+    <script>
+        function cambiarTexto() {
+            // Busca el elemento con id="aviso" y cambia su contenido de texto
+            var elemento = document.getElementById("aviso");
+            elemento.textContent = "¡Hola Estudiantes, DOM activado!";
+        }
+    </script>
+</head>
+<body>
+    <h1>Práctica getElementById</h1>
+    
+    <!-- Elemento objetivo con su ID exacto -->
+    <p id="aviso">Texto original que va a cambiar...</p>
+
+    <!-- Botón para accionar la función -->
+    <button onclick="cambiarTexto()">Modificar Texto</button>
+
+    <br><br>
+    <a href="../../../segundo_parcial.html">&larr; Volver al Segundo Parcial</a>
+</body>
+</html>

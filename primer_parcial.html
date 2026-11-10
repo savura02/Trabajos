@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer Parcial - Guía de Estudio y Prácticas</title>
+    <link rel="shortcut icon" href="ICON2.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --ghibli-green: #3b6d51;
+            --ghibli-sage: #8fa89b;
+            --ghibli-cream: #fbfbfa;
+            --ghibli-card: #ffffff;
+            --ghibli-sky: #5b82a6;
+            --text-main: #2c3e35;
+            --text-muted: #5c7065;
+            --border-color: #d1ded6;
+            --code-bg: #1a2621;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            font-family: 'Quicksand', sans-serif; 
+            background-color: var(--ghibli-cream); 
+            color: var(--text-main); 
+            padding: 2.5rem 1rem; 
+            background-image: radial-gradient(#e2ebe4 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        .nav-back { 
+            display: inline-block; 
+            margin-bottom: 1.5rem; 
+            color: var(--ghibli-green); 
+            text-decoration: none; 
+            font-weight: 600; 
+            transition: color 0.2s;
+        }
+        .nav-back:hover { color: var(--ghibli-sky); text-decoration: underline; }
+
+        header { 
+            background: linear-gradient(135deg, var(--ghibli-green) 0%, var(--ghibli-sky) 100%); 
+            color: white; 
+            padding: 3rem 2rem; 
+            border-radius: 1.5rem; 
+            margin-bottom: 2.5rem; 
+            text-align: center; 
+            box-shadow: 0 10px 30px -5px rgba(59, 109, 81, 0.25);
+            border: 2px solid #a8c5b3;
+        }
+        header h1 { font-size: 2.3rem; font-weight: 700; margin-bottom: 0.5rem; }
+        header p { font-size: 1.1rem; opacity: 0.95; font-weight: 500; }
+
+        .section-title { 
+            font-size: 1.4rem; 
+            color: var(--ghibli-green); 
+            margin: 3.5rem 0 1rem 0; 
+            border-bottom: 2px dashed var(--ghibli-sage); 
+            padding-bottom: 0.5rem; 
+            font-weight: 700; 
+        }
+
+        /* Tarjeta de Teoría para Estudiar */
+        .theory-card {
+            background: #eef4f1;
+            border-left: 5px solid var(--ghibli-green);
+            border-radius: 0.5rem;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+        .theory-card h4 {
+            color: var(--ghibli-green);
+            margin-bottom: 0.4rem;
+            font-size: 1.05rem;
+        }
+        
+        .grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+        @media (min-width: 768px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+
+        .card { 
+            background: var(--ghibli-card); 
+            border: 1px solid var(--border-color); 
+            border-radius: 1rem; 
+            padding: 1.8rem; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between; 
+            box-shadow: 0 4px 12px rgba(44, 62, 53, 0.04); 
+            transition: transform 0.2s, box-shadow 0.2s; 
+        }
+        .card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 12px 25px -5px rgba(59, 109, 81, 0.12); 
+            border-color: var(--ghibli-green); 
+        }
+        
+        .badge { 
+            display: inline-block; 
+            background: #e8f2ec; 
+            color: var(--ghibli-green); 
+            font-size: 0.75rem; 
+            font-weight: 700; 
+            padding: 0.3rem 0.8rem; 
+            border-radius: 9999px; 
+            margin-bottom: 1rem; 
+            border: 1px solid #c2dcd0;
+        }
+        .card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--text-main); font-weight: 700; }
+        .card p.desc { font-size: 0.92rem; color: var(--text-muted); margin-bottom: 1.2rem; line-height: 1.5; }
+
+        details { 
+            margin-bottom: 1.2rem; 
+            background: #f4f7f5; 
+            border: 1px solid var(--border-color); 
+            border-radius: 0.6rem; 
+            padding: 0.6rem 1rem; 
+        }
+        summary { font-size: 0.85rem; font-weight: 600; color: var(--ghibli-green); cursor: pointer; outline: none; }
+        pre { background: var(--code-bg); color: #a3e4d7; padding: 0.75rem; border-radius: 0.4rem; font-family: 'Fira Code', monospace; font-size: 0.75rem; overflow-x: auto; margin-top: 0.5rem; }
+
+        .btn { 
+            display: block; 
+            text-align: center; 
+            background-color: var(--ghibli-green); 
+            color: white; 
+            padding: 0.75rem; 
+            border-radius: 0.6rem; 
+            text-decoration: none; 
+            font-weight: 600; 
+            font-size: 0.92rem; 
+            transition: background 0.2s; 
+        }
+        .btn:hover { background-color: #2e5440; }
+        
+        footer { text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem; padding-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="nav-back">&larr; Volver al Inicio del Bosque</a>
+        <header>
+            <h1>🌱 Guía de Estudio: Primer Parcial (HTML)</h1>
+            <p>Estructuras Web, Maquetación, Tablas y Formularios</p>
+        </header>
+
+        <!-- ================= ESTRUCTURA Y CONTENEDORES ================= -->
+        <h2 class="section-title">🍃 1. Estructura y Maquetación Web</h2>
+        <div class="theory-card">
+            <h4>Repaso Teórico:</h4>
+            HTML (HyperText Markup Language) utiliza etiquetas para estructurar las páginas web. La etiqueta <code>&lt;div&gt;</code> es un contenedor genérico en bloque fundamental para agrupar elementos y darles diseño con CSS.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Div</span>
+                    <h3>Práctica Div</h3>
+                    <p class="desc">Uso de contenedores y bloques HTML para distribución de diseño.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;div style="background: #f0f0f0;"&gt;\n    &lt;h3&gt;Contenedor Div&lt;/h3&gt;\n&lt;/div&gt;</pre></details>
+                <a href="1er_parcial/Div/oractica.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Estructura HTML</span>
+                    <h3>Estructura Base</h3>
+                    <p class="desc">Maquetación inicial con etiquetas semánticas y organización de documentos.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;!DOCTYPE html&gt;\n&lt;html lang="es"&gt;\n&lt;head&gt;...&lt;/head&gt;\n&lt;body&gt;...&lt;/body&gt;\n&lt;/html&gt;</pre></details>
+                <a href="1er_parcial/Estructura/estructura.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <!-- ================= NAVEGACIÓN Y TABLAS ================= -->
+        <h2 class="section-title">🍃 2. Navegación, Listas y Tablas</h2>
+        <div class="theory-card">
+            <h4> Repaso Teórico:</h4>
+            Las tablas en HTML se construyen con <code>&lt;table&gt;</code>, filas <code>&lt;tr&gt;</code>, celdas de datos <code>&lt;td&gt;</code> y encabezados <code>&lt;th&gt;</code>. Los hipervínculos <code>&lt;a&gt;</code> permiten navegar entre páginas mediante rutas relativas o absolutas.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Hipervínculos y Listas</span>
+                    <h3>Página Principal</h3>
+                    <p class="desc">Implementación de enlaces de navegación internos y listas ordenadas/desordenadas.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;ul&gt;\n    &lt;li&gt;&lt;a href="principal.html"&gt;Inicio&lt;/a&gt;&lt;/li&gt;\n&lt;/ul&gt;</pre></details>
+                <a href="1er_parcial/Hipervinculos_listas/principal.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Horario</span>
+                    <h3>Horario de Clase</h3>
+                    <p class="desc">Diseño tabular organizado para mostrar materias y horas escolares.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;table border="1"&gt;\n    &lt;tr&gt;&lt;th&gt;Hora&lt;/th&gt;&lt;th&gt;Lunes&lt;/th&gt;&lt;/tr&gt;\n&lt;/table&gt;</pre></details>
+                <a href="1er_parcial/Horario_Clase/HorarioClase.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Tablas</span>
+                    <h3>Tabla HTML</h3>
+                    <p class="desc">Estructuración avanzada con filas (`tr`), celdas (`td`) y encabezados (`th`).</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;table&gt;\n    &lt;tr&gt;&lt;td&gt;Dato 1&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;</pre></details>
+                <a href="1er_parcial/Tabla/tabla.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Tabla Periódica</span>
+                    <h3>Tabla Periódica de Elementos</h3>
+                    <p class="desc">Maquetación compleja combinando celdas y estilos para simular elementos químicos.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;td colspan="2" style="background: #e2e8f0;"&gt;H&lt;/td&gt;</pre></details>
+                <a href="1er_parcial/Tabla_Periodica/tablaperi.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <!-- ================= MULTIMEDIA Y FORMULARIOS ================= -->
+        <h2 class="section-title">🍃 3. Multimedia, Formularios y Extras</h2>
+        <div class="theory-card">
+            <h4>📖 Repaso Teórico:</h4>
+            HTML5 incluye etiquetas nativas como <code>&lt;video&gt;</code> y <code>&lt;audio&gt;</code> para reproducir contenido multimedia. Los formularios (<code>&lt;form&gt;</code>) recolectan información del usuario mediante inputs de texto, botones y campos de selección.
+        </div>
+        <div class="grid">
+            <div class="card">
+                <div>
+                    <span class="badge">Multimedia</span>
+                    <h3>Video y Audio</h3>
+                    <p class="desc">Incrustación de elementos multimedia nativos en HTML5.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;video controls&gt;\n    &lt;source src="video.mp4" type="video/mp4"&gt;\n&lt;/video&gt;</pre></details>
+                <a href="1er_parcial/Video_Audio/video_audio.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Formulario</span>
+                    <h3>Formulario de Registro</h3>
+                    <p class="desc">Captura de datos con inputs, etiquetas, botones y campos de selección.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;form&gt;\n    &lt;label&gt;Nombre:&lt;/label&gt;\n    &lt;input type="text" name="nombre"&gt;\n&lt;/form&gt;</pre></details>
+                <a href="1er_parcial/Trabajos/formulario.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Imágenes e Iconos</span>
+                    <h3>Imágenes y Favicon</h3>
+                    <p class="desc">Integración de recursos gráficos e iconos de pestaña en el navegador.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;img src="imagen.jpg" alt="Ejemplo"&gt;\n&lt;link rel="icon" href="ICON2.png"&gt;</pre></details>
+                <a href="1er_parcial/Trabajos/imagen.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Framework / Pruebas</span>
+                    <h3>Framework y W3Schools</h3>
+                    <p class="desc">Prácticas de pruebas y exploración de librerías o estilos iniciales.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;link rel="stylesheet" href="framework.css"&gt;</pre></details>
+                <a href="1er_parcial/Trabajos/framework.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">W3Schools</span>
+                    <h3>Práctica WWWSchools</h3>
+                    <p class="desc">Ejercicios de referencia basados en guías de desarrollo web.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;!-- Práctica de referencia HTML --&gt;</pre></details>
+                <a href="1er_parcial/Pruebas_WWWSchools/oractica2.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+            <div class="card">
+                <div>
+                    <span class="badge">Prueba</span>
+                    <h3>Prueba de Evaluación</h3>
+                    <p class="desc">Archivo de evaluación de conocimientos generales del primer parcial.</p>
+                </div>
+                <details><summary>Ver código clave</summary><pre>&lt;!-- Evaluación Práctica HTML --&gt;</pre></details>
+                <a href="1er_parcial/Trabajos/Prueba.html"  class="btn">Ejecutar Práctica</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Uso de IA</p>
+        </footer>
+    </div>
+</body>
+</html>

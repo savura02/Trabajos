@@ -1,0 +1,30 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    line-height:1.6 ;
+    color: rgb(18, 20, 20);
+    background-color: rgb(213, 230, 224);
+    
+}
+.encabezado{
+    background: linear-gradient(135 deg, #1e3a8a);
+    color: aqua;
+    text-align: center;
+    padding: 55px 20px;
+}
+.encabezado h1{
+    font-size: clamp(2rem,5vw,3rem);
+    margin-bottom: 10px;
+}
+.navegacion{
+    background-color: black;
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}

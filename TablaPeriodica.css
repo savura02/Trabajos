@@ -1,0 +1,15 @@
+table{
+    background-color: rgb(234, 233, 236);
+    
+    text-align: center;
+
+
+}
+td{
+    border-radius: 3px;
+    border-color: rgb(144, 182, 182);
+    font-size: 12px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: center;
+    background-color: rgb(62, 119, 119);
+}
